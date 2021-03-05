@@ -13,12 +13,12 @@ object frmPricipal: TfrmPricipal
   Menu = mainPrincipal
   OldCreateOrder = False
   WindowState = wsMaximized
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object mainPrincipal: TMainMenu
-    Left = 912
-    Top = 8
+    Left = 16
     object CADASTRO1: TMenuItem
       Caption = 'CADASTRO'
       object CLIENTE1: TMenuItem
@@ -29,6 +29,7 @@ object frmPricipal: TfrmPricipal
       end
       object CATEGORIA1: TMenuItem
         Caption = 'CATEGORIA'
+        OnClick = CATEGORIA1Click
       end
       object PRODUTO1: TMenuItem
         Caption = 'PRODUTO'

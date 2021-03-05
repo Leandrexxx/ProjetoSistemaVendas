@@ -21,14 +21,11 @@ object frmTelaHeranca: TfrmTelaHeranca
     Top = 0
     Width = 870
     Height = 440
-    ActivePage = tabManutencao
+    ActivePage = tabListagem
     Align = alClient
     TabOrder = 0
     object tabListagem: TTabSheet
       Caption = 'Listagem'
-    end
-    object tabManutencao: TTabSheet
-      Caption = 'Manuten'#231#227'o'
       ImageIndex = 1
       object pnlListagemTopo: TPanel
         Left = 0
@@ -53,6 +50,10 @@ object frmTelaHeranca: TfrmTelaHeranca
         TitleFont.Style = []
       end
     end
+    object tabManutencao: TTabSheet
+      Caption = 'Manuten'#231#227'o'
+      ImageIndex = 1
+    end
   end
   object pnlRodape: TPanel
     Left = 0
@@ -68,6 +69,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Height = 25
       Caption = '&Novo'
       TabOrder = 0
+      OnClick = btnNovoClick
     end
     object btnAlterar: TBitBtn
       Left = 97
@@ -76,6 +78,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Height = 25
       Caption = '&ALterar'
       TabOrder = 1
+      OnClick = btnAlterarClick
     end
     object btnCancelar: TBitBtn
       Left = 178
@@ -84,6 +87,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Height = 25
       Caption = '&Cancelar'
       TabOrder = 2
+      OnClick = btnCancelarClick
     end
     object btnGravar: TBitBtn
       Left = 259
@@ -92,6 +96,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Height = 25
       Caption = '&Gravar'
       TabOrder = 3
+      OnClick = btnGravarClick
     end
     object btnApagar: TBitBtn
       Left = 340
@@ -100,6 +105,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       Height = 25
       Caption = 'Apaga&r'
       TabOrder = 4
+      OnClick = btnApagarClick
     end
     object btnFechar: TBitBtn
       Left = 776
@@ -125,6 +131,7 @@ object frmTelaHeranca: TfrmTelaHeranca
     Top = 47
     Width = 409
     Height = 21
+    Enabled = False
     TabOrder = 2
     Text = ''
     TextHint = 'Digite sua pesquisa'

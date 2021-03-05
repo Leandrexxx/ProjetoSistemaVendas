@@ -15,7 +15,6 @@ type
     pgcPrincipal: TPageControl;
     pnlRodape: TPanel;
     tabListagem: TTabSheet;
-    tabManutencao: TTabSheet;
     pnlListagemTopo: TPanel;
     mskPesquisar: TMaskEdit;
     btnPesquisar: TBitBtn;
@@ -29,10 +28,19 @@ type
     btnNavigator: TDBNavigator;
     qryListagem: TFDQuery;
     dtsListagem: TDataSource;
+    tabManutencao: TTabSheet;
     procedure FormCreate(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
+    procedure btnAlterarClick(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
+    procedure btnApagarClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
   private
     { Private declarations }
+
+    procedure ControlarBotoes(btnNovo,btnAlterar,btnCancelar,btnGravar,btnApagar:TBitBtn;
+          Navegador:TDBNavigator; pgcPrincipal:TPageControl; Flag:Boolean);
   public
     { Public declarations }
   end;
@@ -44,9 +52,48 @@ implementation
 
 {$R *.dfm}
 
+//AQUI EU PRECISO DIZER A QUAL FORMULARIO ELE ESTA INSTANCIADO
+procedure TfrmTelaHeranca.btnNovoClick(Sender: TObject);
+begin
+  ControlarBotoes(btnNovo,btnAlterar,btnCancelar,btnGravar,btnApagar,btnNavigator,pgcPrincipal,false);
+end;
+
+procedure TfrmTelaHeranca.ControlarBotoes(btnNovo,btnAlterar,btnCancelar,btnGravar,btnApagar:TBitBtn;
+          navegador:TDBNavigator; pgcPrincipal:TPageControl; Flag:Boolean);
+begin
+   btnNovo.Enabled    :=Flag;
+   btnApagar.Enabled  :=Flag;
+   btnAlterar.Enabled :=Flag;
+  // dbNavi.Enabled :=Flag;
+   navegador.Enabled :=Flag;
+   pgcPrincipal.Pages[0].TabVisible :=Flag;
+   btnCancelar.Enabled :=not(Flag);
+   btnGravar.Enabled :=not(Flag);
+end;
+
+procedure TfrmTelaHeranca.btnAlterarClick(Sender: TObject);
+begin
+   ControlarBotoes(btnNovo,btnAlterar,btnCancelar,btnGravar,btnApagar,btnNavigator,pgcPrincipal,false);
+end;
+
+procedure TfrmTelaHeranca.btnApagarClick(Sender: TObject);
+begin
+  ControlarBotoes(btnNovo,btnAlterar,btnCancelar,btnGravar,btnApagar,btnNavigator,pgcPrincipal,true);
+end;
+
+procedure TfrmTelaHeranca.btnCancelarClick(Sender: TObject);
+begin
+  ControlarBotoes(btnNovo,btnAlterar,btnCancelar,btnGravar,btnApagar,btnNavigator,pgcPrincipal,True);
+end;
+
 procedure TfrmTelaHeranca.btnFecharClick(Sender: TObject);
 begin
   Application.Terminate;
+end;
+
+procedure TfrmTelaHeranca.btnGravarClick(Sender: TObject);
+begin
+  ControlarBotoes(btnNovo,btnAlterar,btnCancelar,btnGravar,btnApagar,btnNavigator,pgcPrincipal,true);
 end;
 
 procedure TfrmTelaHeranca.FormCreate(Sender: TObject);
